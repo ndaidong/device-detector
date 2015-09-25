@@ -1,8 +1,7 @@
 /**
  * Device Detector
- * Author by @ndaidong
- * GitHub : git@github.com:techpush/device-detector.git
- * Copyright by *.techpush.net
+ * GitHub : git@github.com:ndaidong/device-detector.git
+ * Author by @ndaidong at Twitter
 **/
 
 ;(function(context){
