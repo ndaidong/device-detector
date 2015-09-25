@@ -1,0 +1,34 @@
+{
+  "version": "0.0.6",
+  "name": "device-detector",
+  "description": "Simple way to detect device info on Node.js and Browser",
+  "homepage": "http://techpush.net",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:techpush/device-detector.git"
+  },
+  "author": "Dong Nguyen <ndaidong@gmail.com> (https://twitter.com/ndaidong)",
+  "main": "./index.js",
+  "engines": {
+    "node": ">= 0.9"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "devDependencies": {
+    "babel": "latest",
+    "bellajs": "latest",
+    "mocha": "latest",
+    "chai": "latest"
+  },
+  "license": "MIT",
+  "maintainers": [
+    "ndaidong <ndaidong@gmail.com>"
+  ],
+  "bugs": {
+    "url": "https://github.com/techpush/device-detector/issues"
+  },
+  "directories": {
+    "test": "test"
+  }
+}
