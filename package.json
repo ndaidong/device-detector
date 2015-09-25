@@ -1,5 +1,5 @@
 {
-  "version": "0.0.7",
+  "version": "0.0.8",
   "name": "device-detector",
   "description": "Simple way to detect device info on Node.js and Browser",
   "homepage": "http://techpush.net",

@@ -85,7 +85,7 @@ The only parameter "userAgent" is optional in web browser, but required in Node.
 For example:
 
 ```
-var ua = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1';
+var ua = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
 var deviceInfo = DeviceDetector.parse(ua);
 ```
 
@@ -93,11 +93,11 @@ deviceInfo is an object looks like this:
 
 ```
   {
-    type: 'Desktop',
-    browser: 'Firefox',
-    engine: 'Gecko',
-    version: '40.1',
-    os: 'Windows NT'
+    type: 'Bot',
+    browser: '',
+    engine: 'Googlebot',
+    version: '2.1',
+    os: ''
   }
 
 ```
@@ -136,7 +136,7 @@ GET /profile 200 - 33805 bytes 619.092 ms - Chrome 45.0.2454.93, Linux Desktop -
 ...
 ```
 
-In the browsers, this method automatically executes and its result - current browser info - is being set to DeviceDetector.info property. 
+In the browsers, this method automatically executes and its result - current browser info - is being set to DeviceDetector.info property.
 
 Also, if you don't pass "userAgent" parameter while calling "parse" method, it will return DeviceDetector.info instead of parsing again.
 
@@ -144,7 +144,7 @@ Also, if you don't pass "userAgent" parameter while calling "parse" method, it w
 # Test with Mocha
 
 ```
-git clone https://github.com/techpush/device-detector.git
+git clone https://github.com/ndaidong/device-detector.git
 cd device-detector
 npm install
 mocha
