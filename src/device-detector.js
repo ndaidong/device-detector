@@ -1,5 +1,5 @@
 /**
- * Device Detector v0.0.6
+ * Device Detector
  * Author by @ndaidong
  * GitHub : git@github.com:techpush/device-detector.git
  * Copyright by *.techpush.net
