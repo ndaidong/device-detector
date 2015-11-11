@@ -4,8 +4,10 @@
  */
 /* global describe it */
 
-import path from 'path';
-import chai from 'chai';
+'use strict';
+
+var path = require('path');
+var chai = require('chai');
 
 chai.should();
 var expect = chai.expect;
