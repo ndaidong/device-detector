@@ -3,6 +3,8 @@ device-detector
 
 Simple tool for detecting device info in Node.js and web browsers. Support almost popular browsers and bots.
 
+![Travis](https://travis-ci.org/ndaidong/average-rating.svg?branch=master)
+
 # Contents
 
 * [Setup](#setup)
