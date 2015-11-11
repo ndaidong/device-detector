@@ -1,5 +1,5 @@
 {
-  "version": "0.0.8",
+  "version": "0.1.12",
   "name": "device-detector",
   "description": "Simple way to detect device info on Node.js and Browser",
   "homepage": "http://techpush.net",
@@ -16,7 +16,7 @@
     "test": "mocha test"
   },
   "devDependencies": {
-    "babel": "latest",
+    "traceur": "latest",
     "bellajs": "latest",
     "mocha": "latest",
     "chai": "latest"

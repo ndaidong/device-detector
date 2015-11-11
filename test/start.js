@@ -1,4 +1,7 @@
-require('babel/register');
+var traceur = require('traceur');
+traceur.require.makeDefault((filename) => {
+  return filename.indexOf('node_modules') === -1;
+});
 
 var fs = require('fs');
 var path = require('path');
