@@ -91,7 +91,7 @@ describe('Bots and Crawlers', () => {
         os: ''
       }
     }
-  ]
+  ];
 
   data.forEach((device) => {
 

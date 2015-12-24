@@ -4,17 +4,17 @@
  * Author by @ndaidong at Twitter
 **/
 
-;(function(context){
+;(function init(context) {
 
   var DeviceDetector = {
     ENV: 'browser'
-  }
+  };
 
-  if(typeof module !== 'undefined' && module.exports){
+  if (typeof module !== 'undefined' && module.exports) {
     DeviceDetector.ENV = 'node';
   }
 
-  var detectDevice = function(userAgent){
+  var detectDevice = function _detect(userAgent) {
 
     var re = {
       type: 'Unknown',
@@ -22,11 +22,11 @@
       engine: '',
       version: '',
       os: ''
-    }
+    };
 
     var ua = userAgent || navigator.userAgent;
 
-    if(!ua){
+    if (!ua) {
       return re;
     }
 
@@ -34,7 +34,7 @@
 
     re.userAgent = ua;
 
-    var detect = function(p){
+    function detect(p) {
       return p.test(n);
     }
 
@@ -65,150 +65,115 @@
     var isFennec = detect(/fennec/i);
     var isMaemo = detect(/maemo/i);
 
-    re.type = (function(){
+    re.type = (function _type() {
       var t = 'Desktop';
-      if(detect(/(iphone|ipod|((?:android)?.*?mobile)|j2me|mobi|blackberry|nokia|maemo|mini)/i)){
+      if (detect(/(iphone|ipod|((?:android)?.*?mobile)|j2me|mobi|blackberry|nokia|maemo|mini)/i)) {
         t = 'Mobile';
-      }
-      else if(detect(/(ipad|android(?!.*mobile))/i) || detect(/\W(kindle|silk|tablet)\W/i)){
+      } else if (detect(/(ipad|android(?!.*mobile))/i) || detect(/\W(kindle|silk|tablet)\W/i)) {
         t = 'Tablet';
-      }
-      else if(detect(/(bot|crawler|spider|slurp|seeker)/i)){
+      } else if (detect(/(bot|crawler|spider|slurp|seeker)/i)) {
         t = 'Bot';
-      }
-      else if(detect(/(fetcher|scan|valid|check|news|engine)/i)){
+      } else if (detect(/(fetcher|scan|valid|check|news|engine)/i)) {
         t = 'Util';
       }
       return t;
     })();
 
-    re.os = (function(){
+    re.os = (function _os() {
 
       var o = '';
 
-      if(re.type === 'Bot' || re.type === 'Util'){
+      if (re.type === 'Bot' || re.type === 'Util') {
         return o;
       }
 
-      if(detect(/android/i)){
+      if (detect(/android/i)) {
         o = 'Android';
-      }
-      else if(detect(/(ipad|iphone|ipod)/i)){
+      } else if (detect(/(ipad|iphone|ipod)/i)) {
         o = 'iOS';
-      }
-      else if(detect(/(blackberry)/i)){
+      } else if (detect(/(blackberry)/i)) {
         o = 'BlackBerry';
-      }
-      else if(detect(/(symbos|symbian|nokia|maemo)/i)){
+      } else if (detect(/(symbos|symbian|nokia|maemo)/i)) {
         o = 'SymbianOS';
-      }
-      else if(detect(/linux/i)){
+      } else if (detect(/linux/i)) {
         o = 'Linux';
-      }
-      else if(detect(/mac/i)){
+      } else if (detect(/mac/i)) {
         o = 'Mac';
-      }
-      else if(detect(/iemobile/i)){
+      } else if (detect(/iemobile/i)) {
         o = 'WindowsPhone';
-      }
-      else if(detect(/win/i)){
-        if(detect(/windows nt/i)){
+      } else if (detect(/win/i)) {
+        if (detect(/windows nt/i)) {
           o = 'Windows NT';
-        }
-        else{
+        } else {
           o = 'Windows';
         }
-      }
-      else if(detect(/cros/i)){
+      } else if (detect(/cros/i)) {
         o = 'ChromeOS';
       }
       return o;
     })();
 
-    re.browser = (function(){
+    re.browser = (function _br() {
 
       var b = '';
 
-      if(re.type === 'Bot' || re.type === 'Util'){
+      if (re.type === 'Bot' || re.type === 'Util') {
         return b;
       }
 
-      if(isWebkit && isChrome && !isMidori && !isVivaldi && !isEdge){
+      if (isWebkit && isChrome && !isMidori && !isVivaldi && !isEdge) {
         b = 'Chrome';
-      }
-      else if(isMinefield){
+      } else if (isMinefield) {
         b = 'Minefield';
-      }
-      else if(isGecko && isFirefox && !isFennec && !isMaemo){
+      } else if (isGecko && isFirefox && !isFennec && !isMaemo) {
         b = 'Firefox';
-      }
-      else if(isWebkit && isSafari && !isChrome && !isMidori && !isOmniWeb && !isUCBrowser && !isVivaldi && !isMaxthon && !isDorothy){
+      } else if (isWebkit && isSafari && !isChrome && !isMidori && !isOmniWeb && !isUCBrowser && !isVivaldi && !isMaxthon && !isDorothy) {
         b = 'Safari';
-      }
-      else if(isOmniWeb){
+      } else if (isOmniWeb) {
         b = 'OmniWeb';
-      }
-      else if(isUCBrowser){
+      } else if (isUCBrowser) {
         b = 'UCBrowser';
-      }
-      else if(isKonqueror){
+      } else if (isKonqueror) {
         b = 'Konqueror';
-      }
-      else if(isMaxthon){
+      } else if (isMaxthon) {
         b = 'Maxthon';
-      }
-      else if(isVivaldi){
+      } else if (isVivaldi) {
         b = 'Vivaldi';
-      }
-      else if(isMidori){
+      } else if (isMidori) {
         b = 'Midori';
-      }
-      else if(isOperaMini){
+      } else if (isOperaMini) {
         b = 'Opera Mini';
-      }
-      else if(isOpera){
+      } else if (isOpera) {
         b = 'Opera';
-      }
-      else if(isEdge){
+      } else if (isEdge) {
         b = 'Edge';
-      }
-      else if(isAvantBrowser){
+      } else if (isAvantBrowser) {
         b = 'Avant Browser';
-      }
-      else if(isSeaMonkey){
+      } else if (isSeaMonkey) {
         b = 'SeaMonkey';
-      }
-      else if(isDeepnetExplorer){
+      } else if (isDeepnetExplorer) {
         b = 'Deepnet Explorer';
-      }
-      else if(detect(/iemobile/i)){
+      } else if (detect(/iemobile/i)) {
         b = 'IEMobile';
-      }
-      else if(isIE && !isOpera && !isVivaldi){
+      } else if (isIE && !isOpera && !isVivaldi) {
         b = 'MSIE';
-      }
-      else if(isDorothy){
+      } else if (isDorothy) {
         b = 'Dorothy Browser';
-      }
-      else if(isFennec){
+      } else if (isFennec) {
         b = 'Fennec';
-      }
-      else if(isMaemo){
+      } else if (isMaemo) {
         b = 'Maemo Browser';
-      }
-      else if(isNetscape){
+      } else if (isNetscape) {
         b = 'Netscape';
       }
 
-      if(!b){
-        if(re.os === 'SymbianOS'){
-          if(detect(/doris/i)){
+      if (!b) {
+        if (re.os === 'SymbianOS') {
+          if (detect(/doris/i)) {
             b = 'Doris';
-          }
-          else if(detect(/gobrowser/)){
+          } else if (detect(/gobrowser/)) {
             b = 'GoBrowser';
-          }
-          else{
+          } else {
             b = 'Nokia Browser';
           }
         }
@@ -216,140 +181,118 @@
       return b;
     })();
 
-    re.engine = (function(){
+    re.engine = (function _eng() {
       var e = '';
 
-      if(re.type === 'Bot' || re.type === 'Util'){
-        if(detect(/google/i)){
-          if(detect(/image/i)){
+      if (re.type === 'Bot' || re.type === 'Util') {
+        if (detect(/google/i)) {
+          if (detect(/image/i)) {
             e = 'Googlebot-Image';
-          }
-          else if(detect(/feedfetcher/i)){
+          } else if (detect(/feedfetcher/i)) {
             e = 'Feedfetcher-Google';
-          }
-          else if(detect(/appengine/i)){
+          } else if (detect(/appengine/i)) {
             e = 'AppEngine-Google';
-          }
-          else{
+          } else {
             e = 'Googlebot';
           }
-        }
-        else if(detect(/bing/i)){
+        } else if (detect(/bing/i)) {
           e = 'Bingbot';
-        }
-        else if(detect(/baidu/i)){
+        } else if (detect(/baidu/i)) {
           e = 'BaiduSpider';
-        }
-        else if(detect(/yandexbot/i)){
+        } else if (detect(/yandexbot/i)) {
           e = 'YandexBot';
-        }
-        else if(detect(/yandeximages/i)){
+        } else if (detect(/yandeximages/i)) {
           e = 'YandexImages';
-        }
-        else if(detect(/yahoo/i)){
-          if(detect(/yahooseeker/i)){
+        } else if (detect(/yahoo/i)) {
+          if (detect(/yahooseeker/i)) {
             e = 'YahooSeeker';
-          }
-          else{
+          } else {
             e = 'Yahoo! Slurp';
           }
-        }
-        else if(detect(/soso/i)){
+        } else if (detect(/soso/i)) {
           e = 'Sosospider';
-        }
-        else if(detect(/exabot/i)){
+        } else if (detect(/exabot/i)) {
           e = 'Exabot';
-        }
-        else if(detect(/sogou/i)){
+        } else if (detect(/sogou/i)) {
           e = 'Sogou Spider';
-        }
-        else if(detect(/newsgator/i)){
+        } else if (detect(/newsgator/i)) {
           e = 'NewsGator';
         }
-      }
-      else if(isWebkit){
+      } else if (isWebkit) {
         e = 'Webkit';
-      }
-      else if(isGecko){
+      } else if (isGecko) {
         e = 'Gecko';
-      }
-      else if(isTrident){
+      } else if (isTrident) {
         e = 'Trident';
-      }
-      else if(isPresto){
+      } else if (isPresto) {
         e = 'Presto';
       }
       return e;
     })();
 
-    var getVersionByName = function(){
+    function getVersionByName() {
 
-      var bname = (re.type === 'Bot' || re.type === 'Util') ? re.engine : re.browser;
+      var isEngine = re.type === 'Bot' || re.type === 'Util';
+      var bname = isEngine ? re.engine : re.browser;
 
       var v = '';
 
-      if(isDeepnetExplorer){
-        v = (function(){
+      if (isDeepnetExplorer) {
+        v = (function _getver() {
           var x = '', a = n.split(';');
-          for(var i = 0; i < a.length; i++){
+          for (var i = 0; i < a.length; i++) {
             var ai = a[i];
-            if(/deepnet explorer/.test(ai)){
+            if (/deepnet explorer/.test(ai)) {
               x = ai.replace(/[^0-9\.]/ig, '');
               break;
             }
           }
           return x;
         })();
-      }
-      else if(bname === 'YahooSeeker'){
-        v = (function(){
+      } else if (bname === 'YahooSeeker') {
+        v = (function _getver() {
           var a = n.split(' ');
           var b = a[0];
           var c = b.replace('yahooseeker/', '');
           return c;
         })();
-      }
-      else if(isAvantBrowser || isIE){
-        v = (function(){
+      } else if (isAvantBrowser || isIE) {
+        v = (function _getver() {
           var x = '', a = n.split(';');
-          for(var i = 0; i < a.length; i++){
+          for (var i = 0; i < a.length; i++) {
             var ai = a[i];
-            if(/msie/.test(ai)){
+            if (/msie/.test(ai)) {
               x = ai.replace(/[^0-9\.]/ig, '');
               break;
             }
           }
           return x;
         })();
-      }
-      else if(re.browser === 'Nokia Browser'){
-        v = (function(){
+      } else if (re.browser === 'Nokia Browser') {
+        v = (function _getver() {
           var a = n.split('symbianos/');
           return a[1] ? parseFloat(a[1]) : '';
         })();
-      }
-      else if(re.browser === 'GoBrowser'){
-        v = (function(){
+      } else if (re.browser === 'GoBrowser') {
+        v = (function _getver() {
           var a = n.split('gobrowser/');
           return a[1] ? parseFloat(a[1]) : '';
         })();
-      }
-      else{
+      } else {
         var key = bname.toLowerCase(), xkey = key;
         var a = n.replace(xkey, '________').split(' ');
 
-        if(key === 'safari' || isDorothy){
+        if (key === 'safari' || isDorothy) {
           key = 'version/';
-        }
-        else{
+        } else {
           key += '/';
         }
 
-        for(var i = 0; i < a.length; i++){
+        for (var i = 0; i < a.length; i++) {
           var s = a[i].replace('________', xkey);
-          if(s.indexOf(key) !== -1){
+          if (s.indexOf(key) !== -1) {
             var x = s.split('/');
-            if(x.length > 1){
+            if (x.length > 1) {
               v = x[1];
             }
             break;
@@ -357,7 +300,7 @@
         }
       }
 
-      if(v.indexOf(';')){
+      if (v.indexOf(';')) {
         var av = v.split(';');
         v = av[0];
       }
@@ -365,25 +308,24 @@
       return v;
     }
 
-    re.version = (function(){
+    re.version = (function _getver() {
       var v = getVersionByName();
       return v;
     })();
 
     return re;
-  }
+  };
 
   DeviceDetector.parse = detectDevice;
 
   // exports
-  if(DeviceDetector.ENV === 'node'){
+  if (DeviceDetector.ENV === 'node') {
     module.exports = DeviceDetector;
-  }
-  else{
+  } else {
     DeviceDetector.info = detectDevice();
     var root = context || window;
-    if(root.define && root.define.amd){
-      root.define(function(){
+    if (root.define && root.define.amd) {
+      root.define(function _define() {
         return DeviceDetector;
       });
     }

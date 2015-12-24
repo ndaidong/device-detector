@@ -141,7 +141,7 @@ describe('Standard browsers', () => {
         os: 'Linux'
       }
     }
-  ]
+  ];
 
   data.forEach((device) => {
 

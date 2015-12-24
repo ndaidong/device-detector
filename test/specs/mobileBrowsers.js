@@ -71,7 +71,7 @@ describe('Mobile browsers', () => {
         os: 'BlackBerry'
       }
     }
-  ]
+  ];
 
   data.forEach((device) => {
 
