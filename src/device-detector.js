@@ -4,7 +4,7 @@
  * Author by @ndaidong at Twitter
 **/
 
-;(function init(context) {
+(function init(context) {
 
   var DeviceDetector = {
     ENV: 'browser'
@@ -127,7 +127,8 @@
         b = 'Minefield';
       } else if (isGecko && isFirefox && !isFennec && !isMaemo) {
         b = 'Firefox';
-      } else if (isWebkit && isSafari && !isChrome && !isMidori && !isOmniWeb && !isUCBrowser && !isVivaldi && !isMaxthon && !isDorothy) {
+      } else if (isWebkit && isSafari && !isChrome && !isMidori && !isOmniWeb &&
+                   !isUCBrowser && !isVivaldi && !isMaxthon && !isDorothy) {
         b = 'Safari';
       } else if (isOmniWeb) {
         b = 'OmniWeb';
