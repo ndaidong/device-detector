@@ -3,13 +3,16 @@ device-detector
 
 Simple tool for detecting device info in Node.js and web browsers. Support almost popular browsers and bots.
 
-[![NPM](https://badge.fury.io/js/device-detector.svg)](https://badge.fury.io/js/device-detector) ![Travis](https://travis-ci.org/ndaidong/average-rating.svg?branch=master)
+[![NPM](https://badge.fury.io/js/device-detector.svg)](https://badge.fury.io/js/device-detector)
+![Travis](https://travis-ci.org/ndaidong/device-detector.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/ndaidong/device-detector/badge.svg?branch=master)](https://coveralls.io/github/ndaidong/device-detector?branch=master)
+![devDependency Status](https://david-dm.org/ndaidong/device-detector.svg)
 
 # Contents
 
 * [Setup](#setup)
 * [Usage](#usage)
-* [Test](#test-with-mocha)
+* [Test](#test)
 
 
 # Setup
@@ -143,20 +146,15 @@ In the browsers, this method automatically executes and its result - current bro
 Also, if you don't pass "userAgent" parameter while calling "parse" method, it will return DeviceDetector.info instead of parsing again.
 
 
-# Test with Mocha
+# Test
 
 ```
 git clone https://github.com/ndaidong/device-detector.git
 cd device-detector
 npm install
-mocha
+npm test
 ```
-
-Make sure [Mocha](https://mochajs.org/) is already and check the specs under /test folder.
-
-![DeviceDetector test with Mocha](http://i.imgur.com/dzQ3tg6.png)
 
 # License
 
-Apache License
-
+The MIT License (MIT)
