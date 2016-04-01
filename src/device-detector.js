@@ -121,7 +121,7 @@
         return b;
       }
 
-      if (isWebkit && isChrome && !isMidori && !isVivaldi && !isEdge) {
+      if (isWebkit && isChrome && !isMidori && !isVivaldi && !isEdge && !isUCBrowser) {
         b = 'Chrome';
       } else if (isMinefield) {
         b = 'Minefield';
