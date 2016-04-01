@@ -130,6 +130,8 @@
       } else if (isWebkit && isSafari && !isChrome && !isMidori && !isOmniWeb &&
                    !isUCBrowser && !isVivaldi && !isMaxthon && !isDorothy) {
         b = 'Safari';
+      } else if (isDeepnetExplorer) {
+        b = 'Deepnet Explorer';
       } else if (isOmniWeb) {
         b = 'OmniWeb';
       } else if (isUCBrowser) {
@@ -152,8 +154,6 @@
         b = 'Avant Browser';
       } else if (isSeaMonkey) {
         b = 'SeaMonkey';
-      } else if (isDeepnetExplorer) {
-        b = 'Deepnet Explorer';
       } else if (detect(/iemobile/i)) {
         b = 'IEMobile';
       } else if (isIE && !isOpera && !isVivaldi) {

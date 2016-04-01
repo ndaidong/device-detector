@@ -39,7 +39,7 @@ var testOne = (device) => {
 
   let useragent = device.ua;
   let expectation = device.ex;
-  test(`Testing with .parse(${useragent})`, (t) => {
+  test(`Testing with .parse(${useragent})`, { timeout: 1000 }, (t) => {
 
     let result = DeviceDetector.parse(useragent);
 

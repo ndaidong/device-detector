@@ -106,16 +106,6 @@ export var desktops = [
     }
   },
   {
-    ua: 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; Deepnet Explorer 1.5.3; Smart 2x2; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)',
-    ex: {
-      type: 'Desktop',
-      browser: 'Deepnet Explorer',
-      engine: '',
-      version: '1.5.3',
-      os: 'Windows NT'
-    }
-  },
-  {
     ua: 'Mozilla/5.0 (compatible; MSIE 10.6; Windows NT 6.1; Trident/5.0; InfoPath.2; SLCC1; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET CLR 2.0.50727) 3gpp-gba UNTRUSTED/1.0',
     ex: {
       type: 'Desktop',
@@ -253,6 +243,26 @@ export var desktops = [
       engine: 'Webkit',
       version: '1.19',
       os: 'Linux'
+    }
+  },
+  {
+    ua: 'Mozilla/5.0 (X11; Linux) KHTML/4.9.1 (like Gecko) Konqueror/4.9',
+    ex: {
+      type: 'Desktop',
+      browser: 'Konqueror',
+      engine: 'Gecko',
+      version: '4.9',
+      os: 'Linux'
+    }
+  },
+  {
+    ua: 'Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US) AppleWebKit/533.1 (KHTML, like Gecko) Maxthon/3.0.8.2 Safari/533.1',
+    ex: {
+      type: 'Desktop',
+      browser: 'Maxthon',
+      engine: 'Webkit',
+      version: '3.0.8.2',
+      os: 'Windows NT'
     }
   }
 ];
