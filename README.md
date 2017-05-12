@@ -1,3 +1,8 @@
+# NOTE:
+
+This project is usable but no longer being developed; Please consider to use [faisalman/ua-parser-js](https://github.com/faisalman/ua-parser-js) instead. Thanks.
+
+
 device-detector
 ========
 
