@@ -22,7 +22,7 @@
     "report": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "pretest": "npm run lint && npm run nsp",
     "test": "npm run tape",
-    "posttest": "CODECOV_TOKEN=12083a94-8ea5-4e64-b571-76cd8fbd62ab npm run report",
+    "posttest": "CODECOV_TOKEN=056e10ea-583d-4850-8c5c-f67eccc39a3a npm run report",
     "start": "babel-node src/main",
     "build": "gccmin -e src/main.js -n DeviceDetector -o dist -p package.json",
     "reset": "node reset"
