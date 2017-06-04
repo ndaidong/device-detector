@@ -3,14 +3,6 @@
  * @ndaidong
  */
 
-/* eslint no-undefined: 0*/
-/* eslint no-array-constructor: 0*/
-/* eslint no-new-func: 0*/
-/* eslint no-console: 0*/
-/* eslint max-len: 0*/
-
-'use strict';
-
 export var mobiles = [
   {
     ua: 'Opera/9.80 (J2ME/MIDP; Opera Mini/9.80 (S60; SymbOS; Opera Mobi/23.348; U; en) Presto/2.5.25 Version/10.54',

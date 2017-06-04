@@ -1,90 +1,42 @@
-# NOTE:
-
-This project is usable but no longer being developed; Please consider to use [faisalman/ua-parser-js](https://github.com/faisalman/ua-parser-js) instead. Thanks.
-
-
 device-detector
 ========
 
 Simple tool for detecting device info in Node.js and web browsers. Support almost popular browsers and bots.
 
 [![NPM](https://badge.fury.io/js/device-detector.svg)](https://badge.fury.io/js/device-detector)
-![Travis](https://travis-ci.org/ndaidong/device-detector.svg?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/ndaidong/device-detector/badge.svg?branch=master)](https://coveralls.io/github/ndaidong/device-detector?branch=master)
-![devDependency Status](https://david-dm.org/ndaidong/device-detector.svg)
+[![Build Status](https://travis-ci.org/ndaidong/device-detector.svg?branch=master)](https://travis-ci.org/ndaidong/device-detector)
+[![codecov](https://codecov.io/gh/ndaidong/device-detector/branch/master/graph/badge.svg)](https://codecov.io/gh/ndaidong/device-detector)
+[![Dependency Status](https://gemnasium.com/badges/github.com/ndaidong/device-detector.svg)](https://gemnasium.com/github.com/ndaidong/device-detector)
+[![NSP Status](https://nodesecurity.io/orgs/techpush/projects/b9b9775a-ee09-4491-afe1-028f58e0b2fd/badge)](https://nodesecurity.io/orgs/techpush/projects/b9b9775a-ee09-4491-afe1-028f58e0b2fd)
 
-# Contents
+
+## Contents
 
 * [Setup](#setup)
 * [Usage](#usage)
 * [Test](#test)
 
 
-# Setup
+## Setup
 
-### In Node.js:
+- Node.js
 
-```
-npm install device-detector
-```
+  ```
+  npm install device-detector
+  ```
 
-And then:
+- CDN
 
-```
-    var DeviceDetector = require('device-detector');
-```
+  - [DeviceDetector.js](https://cdn.rawgit.com/ndaidong/device-detector/master/dist/DeviceDetector.js)
+  - [DeviceDetector.min.js](https://cdn.rawgit.com/ndaidong/device-detector/master/dist/DeviceDetector.min.js)
+  - [DeviceDetector.min.map](https://cdn.rawgit.com/ndaidong/device-detector/master/dist/DeviceDetector.min.map)
 
-### In the browsers
-
-
-Assuming there is a file device-detector.min.js located at "/public/js/lib/", the following ways can be used to include DeviceDetector:
-
-##### Using SystemJS
-
-```
-    System.config({
-        baseURL: '/public/js/lib',
-        map: {
-            DeviceDetector: 'device-detector.min'
-        }
-    });
-
-    System.import('DeviceDetector').then(function(DeviceDetector){
-        console.log(DeviceDetector.info);
-    });
-
-```
-
-##### Using RequireJS
-
-```
-    require.config({
-        baseUrl: '/public/js/lib',
-        paths: {
-            DeviceDetector: 'device-detector.min'
-        }
-    });
-
-    requirejs('DeviceDetector', function(DeviceDetector){
-        console.log(DeviceDetector.info);
-    });
-
-```
+- Also supports ES6 Module, CommonJS, AMD and UMD style.
 
 
-##### Using traditional script tag
+## Usage
 
-```
-<script type="text/javascript" src="/public/js/lib/device-detector.min.js"></script>
-<script type="text/javascript">
-console.log(DeviceDetector.info);
-</script>
-```
-
-
-# Usage
-
-DeviceDetector provides just one method named "parse".
+DeviceDetector provides just one method named `parse()`.
 
 ```
 DeviceDetector.parse([userAgent]);
@@ -151,7 +103,7 @@ In the browsers, this method automatically executes and its result - current bro
 Also, if you don't pass "userAgent" parameter while calling "parse" method, it will return DeviceDetector.info instead of parsing again.
 
 
-# Test
+## Test
 
 ```
 git clone https://github.com/ndaidong/device-detector.git
