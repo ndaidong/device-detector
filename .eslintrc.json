@@ -1,0 +1,7 @@
+{
+  "extends": "eslint-config-ggc",
+  "rules": {
+    "max-len": 0,
+    "complexity": 0
+  }
+}

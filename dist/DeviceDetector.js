@@ -1,21 +1,22 @@
 /**
- * Device Detector
- * GitHub : git@github.com:ndaidong/device-detector.git
- * Author by @ndaidong at Twitter
+ * device-detector@1.0.0
+ * built on: Sun, 04 Jun 2017 14:51:40 GMT
+ * repository: git@github.com:ndaidong/device-detector.git
+ * maintainer: @ndaidong
+ * License: MIT
 **/
-
-(function init(context) {
-
-  var DeviceDetector = {
-    ENV: 'browser'
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (factory((global.DeviceDetector = global.DeviceDetector || {})));
+}(this, (function (exports) { 'use strict';
+  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
   };
-
-  if (typeof module !== 'undefined' && module.exports) {
-    DeviceDetector.ENV = 'node';
-  }
-
-  var detectDevice = function _detect(userAgent) {
-
+  var parse = function parse() {
+    var userAgent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
     var re = {
       type: 'Unknown',
       browser: '',
@@ -23,21 +24,18 @@
       version: '',
       os: ''
     };
-
-    var ua = userAgent || navigator.userAgent;
-
+    var ua = userAgent;
+    if (!ua && (typeof window === 'undefined' ? 'undefined' : _typeof(window)) !== undefined && window.navigator) {
+      ua == window.navigator.userAgent;
+    }
     if (!ua) {
       return re;
     }
-
     var n = ua.toLowerCase();
-
     re.userAgent = ua;
-
-    function detect(p) {
+    var detect = function detect(p) {
       return p.test(n);
-    }
-
+    };
     var isChrome = detect(/chrome/i);
     var isSafari = detect(/safari/i);
     var isFirefox = detect(/firefox/i);
@@ -53,7 +51,6 @@
     var isMinefield = detect(/minefield/i);
     var isOmniWeb = detect(/omniweb/i);
     var isUCBrowser = detect(/ucbrowser/);
-
     var isWebkit = detect(/webkit/i);
     var isGecko = detect(/gecko/i);
     var isPresto = detect(/presto/i);
@@ -64,8 +61,7 @@
     var isDorothy = detect(/dorothy/i);
     var isFennec = detect(/fennec/i);
     var isMaemo = detect(/maemo/i);
-
-    re.type = (function _type() {
+    re.type = function () {
       var t = 'Desktop';
       if (detect(/(iphone|ipod|((?:android)?.*?mobile)|j2me|mobi|blackberry|nokia|maemo|mini)/i)) {
         t = 'Mobile';
@@ -77,16 +73,12 @@
         t = 'Util';
       }
       return t;
-    })();
-
-    re.os = (function _os() {
-
+    }();
+    re.os = function () {
       var o = '';
-
       if (re.type === 'Bot' || re.type === 'Util') {
         return o;
       }
-
       if (detect(/android/i)) {
         o = 'Android';
       } else if (detect(/(ipad|iphone|ipod)/i)) {
@@ -111,24 +103,19 @@
         o = 'ChromeOS';
       }
       return o;
-    })();
-
-    re.browser = (function _br() {
-
+    }();
+    re.browser = function () {
       var b = '';
-
       if (re.type === 'Bot' || re.type === 'Util') {
         return b;
       }
-
       if (isWebkit && isChrome && !isMidori && !isVivaldi && !isEdge && !isUCBrowser) {
         b = 'Chrome';
       } else if (isMinefield) {
         b = 'Minefield';
       } else if (isGecko && isFirefox && !isFennec && !isMaemo) {
         b = 'Firefox';
-      } else if (isWebkit && isSafari && !isChrome && !isMidori && !isOmniWeb &&
-                   !isUCBrowser && !isVivaldi && !isMaxthon && !isDorothy) {
+      } else if (isWebkit && isSafari && !isChrome && !isMidori && !isOmniWeb && !isUCBrowser && !isVivaldi && !isMaxthon && !isDorothy) {
         b = 'Safari';
       } else if (isDeepnetExplorer) {
         b = 'Deepnet Explorer';
@@ -167,7 +154,6 @@
       } else if (isNetscape) {
         b = 'Netscape';
       }
-
       if (!b) {
         if (re.os === 'SymbianOS') {
           if (detect(/doris/i)) {
@@ -180,11 +166,9 @@
         }
       }
       return b;
-    })();
-
-    re.engine = (function _eng() {
+    }();
+    re.engine = function () {
       var e = '';
-
       if (re.type === 'Bot' || re.type === 'Util') {
         if (detect(/google/i)) {
           if (detect(/image/i)) {
@@ -229,18 +213,15 @@
         e = 'Presto';
       }
       return e;
-    })();
-
-    function getVersionByName() {
-
+    }();
+    var getVersionByName = function getVersionByName() {
       var isEngine = re.type === 'Bot' || re.type === 'Util';
       var bname = isEngine ? re.engine : re.browser;
-
       var v = '';
-
       if (isDeepnetExplorer) {
-        v = (function _getver() {
-          var x = '', a = n.split(';');
+        v = function () {
+          var x = '',
+              a = n.split(';');
           for (var i = 0; i < a.length; i++) {
             var ai = a[i];
             if (/deepnet explorer/.test(ai)) {
@@ -249,17 +230,18 @@
             }
           }
           return x;
-        })();
+        }();
       } else if (bname === 'YahooSeeker') {
-        v = (function _getver() {
+        v = function () {
           var a = n.split(' ');
           var b = a[0];
           var c = b.replace('yahooseeker/', '');
           return c;
-        })();
+        }();
       } else if (isAvantBrowser || isIE) {
-        v = (function _getver() {
-          var x = '', a = n.split(';');
+        v = function () {
+          var x = '',
+              a = n.split(';');
           for (var i = 0; i < a.length; i++) {
             var ai = a[i];
             if (/msie/.test(ai)) {
@@ -268,27 +250,26 @@
             }
           }
           return x;
-        })();
+        }();
       } else if (re.browser === 'Nokia Browser') {
-        v = (function _getver() {
+        v = function () {
           var a = n.split('symbianos/');
           return a[1] ? parseFloat(a[1]) : '';
-        })();
+        }();
       } else if (re.browser === 'GoBrowser') {
-        v = (function _getver() {
+        v = function () {
           var a = n.split('gobrowser/');
           return a[1] ? parseFloat(a[1]) : '';
-        })();
+        }();
       } else {
-        var key = bname.toLowerCase(), xkey = key;
+        var key = bname.toLowerCase(),
+            xkey = key;
         var a = n.replace(xkey, '________').split(' ');
-
         if (key === 'safari' || isDorothy) {
           key = 'version/';
         } else {
           key += '/';
         }
-
         for (var i = 0; i < a.length; i++) {
           var s = a[i].replace('________', xkey);
           if (s.indexOf(key) !== -1) {
@@ -300,36 +281,15 @@
           }
         }
       }
-
       if (v.indexOf(';')) {
         var av = v.split(';');
         v = av[0];
       }
-
       return v;
-    }
-
-    re.version = (function _getver() {
-      var v = getVersionByName();
-      return v;
-    })();
-
+    };
+    re.version = getVersionByName();
     return re;
   };
-
-  DeviceDetector.parse = detectDevice;
-
-  // exports
-  if (DeviceDetector.ENV === 'node') {
-    module.exports = DeviceDetector;
-  } else {
-    DeviceDetector.info = detectDevice();
-    var root = context || window;
-    if (root.define && root.define.amd) {
-      root.define(function _define() {
-        return DeviceDetector;
-      });
-    }
-    root.DeviceDetector = DeviceDetector;
-  }
-})();
+  exports.parse = parse;
+  Object.defineProperty(exports, '__esModule', { value: true });
+})));
