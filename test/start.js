@@ -5,7 +5,7 @@ var path = require('path');
  * Import specs
  */
 
-let where = './tests/specs/detecting';
+let where = './test/specs/detecting';
 if (fs.existsSync(where)) {
   fs.readdirSync(where).forEach((file) => {
     if (path.extname(file) === '.js') {

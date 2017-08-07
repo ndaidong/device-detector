@@ -1,6 +1,6 @@
 /**
- * device-detector@1.0.0
- * built on: Sun, 04 Jun 2017 14:51:40 GMT
+ * device-detector@1.0.1
+ * built on: Mon, 07 Aug 2017 07:23:54 GMT
  * repository: git@github.com:ndaidong/device-detector.git
  * maintainer: @ndaidong
  * License: MIT
@@ -8,13 +8,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (factory((global.DeviceDetector = global.DeviceDetector || {})));
+  (factory((global.DeviceDetector = {})));
 }(this, (function (exports) { 'use strict';
-  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  };
   var parse = function parse() {
     var userAgent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
     var re = {
@@ -25,8 +20,8 @@
       os: ''
     };
     var ua = userAgent;
-    if (!ua && (typeof window === 'undefined' ? 'undefined' : _typeof(window)) !== undefined && window.navigator) {
-      ua == window.navigator.userAgent;
+    if (!ua && typeof window !== 'undefined' && window.navigator) {
+      ua = window.navigator.userAgent;
     }
     if (!ua) {
       return re;
@@ -220,12 +215,12 @@
       var v = '';
       if (isDeepnetExplorer) {
         v = function () {
-          var x = '',
-              a = n.split(';');
+          var x = '';
+          var a = n.split(';');
           for (var i = 0; i < a.length; i++) {
             var ai = a[i];
             if (/deepnet explorer/.test(ai)) {
-              x = ai.replace(/[^0-9\.]/ig, '');
+              x = ai.replace(/[^0-9.]/ig, '');
               break;
             }
           }
@@ -240,12 +235,12 @@
         }();
       } else if (isAvantBrowser || isIE) {
         v = function () {
-          var x = '',
-              a = n.split(';');
+          var x = '';
+          var a = n.split(';');
           for (var i = 0; i < a.length; i++) {
             var ai = a[i];
             if (/msie/.test(ai)) {
-              x = ai.replace(/[^0-9\.]/ig, '');
+              x = ai.replace(/[^0-9.]/ig, '');
               break;
             }
           }
@@ -262,8 +257,8 @@
           return a[1] ? parseFloat(a[1]) : '';
         }();
       } else {
-        var key = bname.toLowerCase(),
-            xkey = key;
+        var key = bname.toLowerCase();
+        var xkey = key;
         var a = n.replace(xkey, '________').split(' ');
         if (key === 'safari' || isDorothy) {
           key = 'version/';
