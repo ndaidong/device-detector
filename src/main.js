@@ -59,15 +59,22 @@ export var parse = (userAgent = false) => {
   let isMaemo = detect(/maemo/i);
 
   re.type = (() => {
-    let t = 'Desktop';
-    if (detect(/(iphone|ipod|((?:android)?.*?mobile)|j2me|mobi|blackberry|nokia|maemo|mini)/i)) {
-      t = 'Mobile';
-    } else if (detect(/(ipad|android(?!.*mobile))/i) || detect(/\W(kindle|silk|tablet)\W/i)) {
-      t = 'Tablet';
-    } else if (detect(/(bot|crawler|spider|slurp|seeker)/i)) {
-      t = 'Bot';
-    } else if (detect(/(fetcher|scan|valid|check|news|engine)/i)) {
-      t = 'Util';
+    let t;
+    switch (true) {
+      case detect(/(ipad|android(?!.*mobile))/i) || detect(/\W(kindle|silk|tablet)\W/i):
+        t = 'Tablet';
+        break;
+      case detect(/(iphone|ipod|((?:android)?.*?mobile)|j2me|mobi|blackberry|nokia|maemo|mini)/i):
+        t = 'Mobile';
+        break;
+      case detect(/(bot|crawler|spider|slurp|seeker)/i):
+        t = 'Bot';
+        break;
+      case detect(/(fetcher|scan|valid|check|news|engine)/i):
+        t = 'Util';
+        break;
+      default:
+        t = 'Desktop';
     }
     return t;
   })();
@@ -121,7 +128,7 @@ export var parse = (userAgent = false) => {
     } else if (isGecko && isFirefox && !isFennec && !isMaemo) {
       b = 'Firefox';
     } else if (isWebkit && isSafari && !isChrome && !isMidori && !isOmniWeb &&
-                 !isUCBrowser && !isVivaldi && !isMaxthon && !isDorothy) {
+      !isUCBrowser && !isVivaldi && !isMaxthon && !isDorothy) {
       b = 'Safari';
     } else if (isDeepnetExplorer) {
       b = 'Deepnet Explorer';
