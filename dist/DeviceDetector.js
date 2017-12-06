@@ -1,6 +1,6 @@
 /**
- * device-detector@1.0.1
- * built on: Mon, 07 Aug 2017 07:23:54 GMT
+ * device-detector@1.0.2
+ * built on: Wed, 06 Dec 2017 05:26:41 GMT
  * repository: git@github.com:ndaidong/device-detector.git
  * maintainer: @ndaidong
  * License: MIT
@@ -57,15 +57,22 @@
     var isFennec = detect(/fennec/i);
     var isMaemo = detect(/maemo/i);
     re.type = function () {
-      var t = 'Desktop';
-      if (detect(/(iphone|ipod|((?:android)?.*?mobile)|j2me|mobi|blackberry|nokia|maemo|mini)/i)) {
-        t = 'Mobile';
-      } else if (detect(/(ipad|android(?!.*mobile))/i) || detect(/\W(kindle|silk|tablet)\W/i)) {
-        t = 'Tablet';
-      } else if (detect(/(bot|crawler|spider|slurp|seeker)/i)) {
-        t = 'Bot';
-      } else if (detect(/(fetcher|scan|valid|check|news|engine)/i)) {
-        t = 'Util';
+      var t = void 0;
+      switch (true) {
+        case detect(/(ipad|android(?!.*mobile))/i) || detect(/\W(kindle|silk|tablet)\W/i):
+          t = 'Tablet';
+          break;
+        case detect(/(iphone|ipod|((?:android)?.*?mobile)|j2me|mobi|blackberry|nokia|maemo|mini)/i):
+          t = 'Mobile';
+          break;
+        case detect(/(bot|crawler|spider|slurp|seeker)/i):
+          t = 'Bot';
+          break;
+        case detect(/(fetcher|scan|valid|check|news|engine)/i):
+          t = 'Util';
+          break;
+        default:
+          t = 'Desktop';
       }
       return t;
     }();
@@ -128,6 +135,9 @@
         b = 'Midori';
       } else if (isOperaMini) {
         b = 'Opera Mini';
+        if (re.os === 'Android' && re.type === 'Tablet') {
+          re.type = 'Unknown';
+        }
       } else if (isOpera) {
         b = 'Opera';
       } else if (isEdge) {

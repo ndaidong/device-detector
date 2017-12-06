@@ -1,8 +1,8 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "device-detector",
   "description": "Detect device info on Node.js and Browser",
-  "homepage": "http://techpush.net",
+  "homepage": "https://www.npmjs.com/package/device-detector",
   "repository": {
     "type": "git",
     "url": "git@github.com:ndaidong/device-detector.git"

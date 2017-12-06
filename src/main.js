@@ -146,6 +146,9 @@ export var parse = (userAgent = false) => {
       b = 'Midori';
     } else if (isOperaMini) {
       b = 'Opera Mini';
+      if (re.os === 'Android' && re.type === 'Tablet') {
+        re.type = 'Unknown';
+      }
     } else if (isOpera) {
       b = 'Opera';
     } else if (isEdge) {
