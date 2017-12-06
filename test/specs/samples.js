@@ -17,7 +17,7 @@ export var mobiles = [
   {
     ua: 'Opera/9.80 (Android; Opera Mini/7.6.35766/35.5706; U; en) Presto/2.8.119 Version/11.10',
     ex: {
-      type: 'Mobile',
+      type: 'Unknown',
       browser: 'Opera Mini',
       engine: 'Presto',
       version: '7.6.35766',
